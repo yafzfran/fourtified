@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About & Contact — FOURTIFIED</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── About & Contact page styles ── */
+
+    /* ── Page Hero ── */
+    .about-hero {
+      background: var(--ink);
+      padding: 96px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-hero__grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.06) 1px, transparent 1px);
+      background-size: 56px 56px;
+    }
+    .about-hero__content { position: relative; z-index: 2; }
+    .about-hero__eyebrow {
+      font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 16px;
+    }
+    .about-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 6vw, 68px);
+      font-weight: 700; line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+    .about-hero__title em { font-style: italic; color: var(--gold); }
+    .about-hero__desc {
+      font-size: 16px; color: rgba(255,255,255,0.55);
+      max-width: 520px; line-height: 1.7;
+    }
+    .about-hero__nav {
+      display: flex; gap: 8px; margin-top: 40px; flex-wrap: wrap;
+    }
+    .about-hero__nav a {
+      font-size: 12px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 9px 20px;
+      border-radius: 100px;
+      border: 1px solid rgba(201,168,76,0.35);
+      color: rgba(255,255,255,0.6);
+      transition: all var(--transition);
+    }
+    .about-hero__nav a:hover,
+    .about-hero__nav a.active {
+      background: var(--gold); border-color: var(--gold); color: var(--ink);
+    }
+
+    /* ── Divider ── */
+    .section-divider {
+      border: none; border-top: 1px solid var(--border);
+      margin: 0;
+    }
+
+    /* ── About sections wrapper ── */
+    .about-wrapper { background: var(--bg); }
+
+    /* ── 1. Summary ── */
+    .summary-section { padding: 96px 0; }
+    .summary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .summary-text .eyebrow {
+      font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 12px;
+    }
+    .summary-text h2 {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 600; line-height: 1.2;
+      margin-bottom: 24px;
+    }
+    .summary-text p {
+      font-size: 15px; color: var(--ink-muted);
+      line-height: 1.75; margin-bottom: 16px;
+    }
+    .summary-text p:last-child { margin-bottom: 0; }
+
+    .summary-stats {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--border);
+    }
+    .stat-box {
+      background: var(--surface);
+      padding: 32px 28px;
+      text-align: center;
+    }
+    .stat-box__num {
+      font-family: var(--font-display);
+      font-size: 40px; font-weight: 700;
+      color: var(--gold); line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-box__label {
+      font-size: 12px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--ink-muted);
+    }
+
+    /* ── 2. Address + Map ── */
+    .address-section { padding: 0 0 96px; }
+    .address-section .inner-heading {
+      margin-bottom: 40px;
+    }
+    .address-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 32px;
+      align-items: start;
+    }
+    .address-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      display: flex; flex-direction: column; gap: 24px;
+    }
+    .address-row {
+      display: flex; align-items: flex-start; gap: 16px;
+    }
+    .address-icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      border-radius: 50%;
+      background: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.25);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+    }
+    .address-row-label {
+      font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 4px;
+    }
+    .address-row-val {
+      font-size: 14px; color: var(--ink); line-height: 1.55;
+    }
+    .address-row-val a { color: var(--ink); transition: color var(--transition); }
+    .address-row-val a:hover { color: var(--gold); }
+
+    .map-embed {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      height: 360px;
+      position: relative;
+      background: #e8e3dc;
+    }
+    .map-embed iframe {
+      width: 100%; height: 100%;
+      border: none;
+      display: block;
+    }
+    /* Fallback static map visual */
+    .map-fallback {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 12px;
+      background: linear-gradient(135deg, #ede8e3 0%, #e0d9d2 100%);
+    }
+    .map-fallback__pin {
+      width: 48px; height: 48px;
+      border-radius: 50% 50% 50% 0;
+      background: var(--gold);
+      transform: rotate(-45deg);
+      box-shadow: 0 4px 16px rgba(201,168,76,0.4);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .map-fallback__pin::after {
+      content: '';
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: var(--surface);
+      transform: rotate(45deg);
+    }
+    .map-fallback__label {
+      font-family: var(--font-display);
+      font-size: 15px; font-weight: 600;
+      color: var(--ink);
+    }
+    .map-fallback__sub {
+      font-size: 12px; color: var(--ink-muted);
+      letter-spacing: 0.06em;
+    }
+    .map-label-bar {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 12px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 12px;
+    }
+    .map-label-bar span { font-size: 13px; color: var(--ink-muted); }
+    .map-label-bar a {
+      font-size: 12px; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--gold);
+      transition: opacity var(--transition);
+    }
+    .map-label-bar a:hover { opacity: 0.7; }
+
+    /* ── 3. Vision & Mission ── */
+    .vm-section {
+      padding: 96px 0;
+      background: var(--ink);
+      position: relative;
+      overflow: hidden;
+    }
+    .vm-section__grid-bg {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .vm-section .container { position: relative; z-index: 2; }
+    .vm-section .inner-heading h2 { color: #fff; }
+    .vm-section .inner-heading .eyebrow { color: var(--gold); }
+    .vm-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .vm-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: var(--radius-lg);
+      padding: 40px 36px;
+      position: relative;
+      overflow: hidden;
+    }
+    .vm-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+    .vm-card__type {
+      font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 16px;
+    }
+    .vm-card__title {
+      font-family: var(--font-display);
+      font-size: 26px; font-weight: 600;
+      color: #fff; margin-bottom: 20px;
+    }
+    .vm-card__text {
+      font-size: 14px; color: rgba(255,255,255,0.55);
+      line-height: 1.75;
+    }
+    .vm-card__values {
+      margin-top: 24px;
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .vm-tag {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 6px 14px;
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 100px;
+      color: var(--gold-light);
+    }
+
+    /* ── 4. Achievements ── */
+    .achievements-section { padding: 96px 0; background: var(--bg); }
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 48px;
+    }
+    .achievement-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px 28px;
+      text-align: center;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .achievement-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px var(--shadow);
+    }
+    .achievement-card__icon {
+      font-size: 32px; margin-bottom: 16px;
+      display: block;
+    }
+    .achievement-card__year {
+      font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 8px;
+    }
+    .achievement-card__title {
+      font-family: var(--font-display);
+      font-size: 17px; font-weight: 600;
+      line-height: 1.3; margin-bottom: 10px;
+    }
+    .achievement-card__desc {
+      font-size: 13px; color: var(--ink-muted); line-height: 1.6;
+    }
+
+    /* ── CONTACT SECTION SEPARATOR ── */
+    .contact-separator {
+      background: var(--gold);
+      padding: 48px 0;
+      text-align: center;
+    }
+    .contact-separator h2 {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 700; color: var(--ink);
+      letter-spacing: -0.01em;
+    }
+    .contact-separator p {
+      font-size: 15px; color: rgba(26,26,26,0.6);
+      margin-top: 8px;
+    }
+
+    /* ── Contact Wrapper ── */
+    .contact-wrapper { background: var(--surface); }
+
+    /* ── Contact Hero ── */
+    .contact-info-section { padding: 96px 0; }
+    .contact-main-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    /* Left: contact cards */
+    .contact-cards { display: flex; flex-direction: column; gap: 20px; }
+    .contact-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px 28px;
+      display: flex; align-items: flex-start; gap: 20px;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    .contact-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 8px 24px var(--shadow);
+    }
+    .contact-card__icon-wrap {
+      width: 48px; height: 48px; flex-shrink: 0;
+      border-radius: 50%;
+      background: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.25);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+    }
+    .contact-card__label {
+      font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 4px;
+    }
+    .contact-card__value {
+      font-size: 15px; font-weight: 500; color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .contact-card__value a {
+      color: var(--ink); transition: color var(--transition);
+    }
+    .contact-card__value a:hover { color: var(--gold); }
+    .contact-card__note {
+      font-size: 12px; color: var(--ink-muted);
+    }
+
+    /* Right: social + form */
+    .contact-right { display: flex; flex-direction: column; gap: 40px; }
+
+    .socials-block h3 {
+      font-family: var(--font-display);
+      font-size: 20px; font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .socials-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .social-card {
+      display: flex; align-items: center; gap: 14px;
+      padding: 16px 18px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--bg);
+      cursor: pointer;
+      transition: all var(--transition);
+      text-decoration: none; color: var(--ink);
+    }
+    .social-card:hover { border-color: var(--gold); background: var(--surface); }
+    .social-card__icon {
+      width: 38px; height: 38px; flex-shrink: 0;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .social-card--ig  .social-card__icon { background: linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); }
+    .social-card--fb  .social-card__icon { background: #1877F2; }
+    .social-card--tt  .social-card__icon { background: #000; }
+    .social-card--tw  .social-card__icon { background: #1DA1F2; }
+    .social-card__name { font-size: 14px; font-weight: 500; }
+    .social-card__handle { font-size: 12px; color: var(--ink-muted); }
+
+    /* Quick message form */
+    .message-form-block h3 {
+      font-family: var(--font-display);
+      font-size: 20px; font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .form-grid { display: flex; flex-direction: column; gap: 14px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-field { display: flex; flex-direction: column; gap: 6px; }
+    .form-field label {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--ink-muted);
+    }
+    .form-field input,
+    .form-field textarea,
+    .form-field select {
+      font-family: var(--font-body);
+      font-size: 14px;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--bg);
+      color: var(--ink);
+      outline: none;
+      transition: border-color var(--transition);
+      resize: none;
+    }
+    .form-field input:focus,
+    .form-field textarea:focus { border-color: var(--gold); }
+    .form-field textarea { height: 110px; }
+
+    .btn--gold {
+      background: var(--gold);
+      color: var(--ink);
+    }
+    .btn--gold:hover { background: #b8963e; }
+
+    /* ── Inner heading helper ── */
+    .inner-heading { }
+    .inner-heading .eyebrow {
+      font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 10px;
+    }
+    .inner-heading h2 {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 3vw, 36px);
+      font-weight: 600; line-height: 1.2;
+    }
+    .inner-heading .gold-line { margin: 12px 0 0; }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .summary-grid,
+      .address-grid,
+      .contact-main-grid { grid-template-columns: 1fr; gap: 40px; }
+      .vm-grid { grid-template-columns: 1fr; }
+      .achievements-grid { grid-template-columns: 1fr 1fr; }
+      .socials-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      .achievements-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .socials-grid { grid-template-columns: 1fr; }
+      .summary-stats { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body class="page-body">
+
+<!-- ═══════════════════════════════════════════════
+     NAV
+════════════════════════════════════════════════ -->
+<nav class="nav" aria-label="Main navigation">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">FOUR<span>T</span>IFIED</a>
+    <ul class="nav__links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="clothing.html">Clothing</a></li>
+      <li><a href="electronics.html">Electronics</a></li>
+      <li><a href="jewellery.html">Jewellery</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:8px">
+      <button class="nav__search-toggle" aria-label="Toggle search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </button>
+      <button class="nav__hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="nav__drawer">
+  <a href="index.html">Home</a>
+  <a href="clothing.html">Clothing</a>
+  <a href="electronics.html">Electronics</a>
+  <a href="jewellery.html">Jewellery</a>
+  <a href="about.html">About & Contact</a>
+</div>
+
+<div class="search-bar" role="search">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="color:var(--ink-muted);flex-shrink:0"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+  <input type="search" placeholder="Search products…" aria-label="Search products" autocomplete="off" />
+  <button aria-label="Close search" onclick="document.querySelector('.search-bar').classList.remove('open');document.getElementById('search-results-dropdown').classList.remove('open')">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 6 6 18M6 6l12 12"/></svg>
+  </button>
+</div>
+<div id="search-results-dropdown" role="listbox">
+  <div id="search-no-results" style="display:none">No products found.</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     ABOUT HERO
+════════════════════════════════════════════════ -->
+<section class="about-hero" aria-label="About FOURTIFIED">
+  <div class="about-hero__grid" aria-hidden="true"></div>
+  <div class="container about-hero__content">
+    <p class="about-hero__eyebrow">Our Story</p>
+    <h1 class="about-hero__title">Crafted with<br /><em>Purpose.</em></h1>
+    <p class="about-hero__desc">
+      FOURTIFIED was born from a simple belief — that quality, style and trust
+      should never be a compromise. We curate the finest clothing, electronics
+      and jewellery, all in one place.
+    </p>
+    <nav class="about-hero__nav" aria-label="Page sections">
+      <a href="#about-summary" class="active">About Us</a>
+      <a href="#our-location">Our Location</a>
+      <a href="#vision-mission">Vision & Mission</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#contact">Contact Us</a>
+    </nav>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     ① ABOUT — SHOP SUMMARY
+═══════════════════════════════════════════════════════ -->
+<div class="about-wrapper">
+  <section class="summary-section" id="about-summary" aria-label="About the shop">
+    <div class="container">
+      <div class="summary-grid">
+
+        <div class="summary-text fade-up">
+          <p class="eyebrow">Who We Are</p>
+          <span class="gold-line"></span>
+          <h2>More than a store.<br />A curated experience.</h2>
+          <p>
+            Founded in 2020, FOURTIFIED started as a small boutique concept
+            in Kuala Lumpur with one mission: to make premium products accessible
+            to everyone. We believe great design and quality craftsmanship
+            should not be reserved for the few.
+          </p>
+          <p>
+            Today we carry hundreds of handpicked products across clothing,
+            consumer electronics and fine jewellery — sourced from trusted
+            makers and verified for quality before they ever reach you.
+          </p>
+          <p>
+            Every product in our catalogue is reviewed, tested and selected
+            by our in-house team. No shortcuts, no filler — just the best
+            of what we find.
+          </p>
+        </div>
+
+        <div class="summary-stats fade-up fade-up--d2" aria-label="Key statistics">
+          <div class="stat-box">
+            <p class="stat-box__num">4+</p>
+            <p class="stat-box__label">Years Active</p>
+          </div>
+          <div class="stat-box">
+            <p class="stat-box__num">20K+</p>
+            <p class="stat-box__label">Happy Customers</p>
+          </div>
+          <div class="stat-box">
+            <p class="stat-box__num">500+</p>
+            <p class="stat-box__label">Products Curated</p>
+          </div>
+          <div class="stat-box">
+            <p class="stat-box__num">3</p>
+            <p class="stat-box__label">Product Categories</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- ══════════════════════════════════════════════════════
+       ② ABOUT — ADDRESS + MAP
+  ═══════════════════════════════════════════════════════ -->
+  <section class="address-section" id="our-location" aria-label="Shop location">
+    <div class="container">
+      <div class="inner-heading fade-up" style="padding-top:96px; margin-bottom:40px">
+        <p class="eyebrow">Find Us</p>
+        <h2>Our Location</h2>
+        <span class="gold-line"></span>
+      </div>
+
+      <div class="address-grid">
+
+        <!-- Address details -->
+        <div class="address-card fade-up">
+          <div class="address-row">
+            <div class="address-icon" aria-hidden="true">📍</div>
+            <div>
+              <p class="address-row-label">Store Address</p>
+              <p class="address-row-val">
+                Lot 4-12, Jalan Ampang<br />
+                Kompleks FOURTIFIED<br />
+                50450 Kuala Lumpur<br />
+                Wilayah Persekutuan, Malaysia
+              </p>
+            </div>
+          </div>
+
+          <div class="address-row">
+            <div class="address-icon" aria-hidden="true">🕐</div>
+            <div>
+              <p class="address-row-label">Opening Hours</p>
+              <p class="address-row-val">
+                Mon – Fri: 10:00 AM – 9:00 PM<br />
+                Sat – Sun: 10:00 AM – 10:00 PM<br />
+                <span style="color:var(--gold);font-size:12px">Public holidays: 11:00 AM – 8:00 PM</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="address-row">
+            <div class="address-icon" aria-hidden="true">🚇</div>
+            <div>
+              <p class="address-row-label">Nearest Transit</p>
+              <p class="address-row-val">
+                Ampang Park MRT Station<br />
+                <span style="font-size:12px;color:var(--ink-muted)">2 min walk · Exit B</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="address-row">
+            <div class="address-icon" aria-hidden="true">🅿️</div>
+            <div>
+              <p class="address-row-label">Parking</p>
+              <p class="address-row-val">
+                Free basement parking available<br />
+                <span style="font-size:12px;color:var(--ink-muted)">Enter via Jalan Ampang Utama</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Map -->
+        <div class="map-embed fade-up fade-up--d2" aria-label="Map showing FOURTIFIED location">
+          <!-- Google Maps embed for Jalan Ampang, Kuala Lumpur -->
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.763862738424!2d101.71997077574628!3d3.1577491533474073!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc37d7e0e70ae3%3A0xc61c0aebea00b2bc!2sJalan%20Ampang%2C%20Kuala%20Lumpur%2C%20Federal%20Territory%20of%20Kuala%20Lumpur!5e0!3m2!1sen!2smy!4v1700000000000!5m2!1sen!2smy"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="FOURTIFIED store location on Google Maps"
+          ></iframe>
+          <div class="map-label-bar">
+            <span>📍 Lot 4-12, Jalan Ampang, 50450 KL</span>
+            <a href="https://maps.google.com/?q=Jalan+Ampang+Kuala+Lumpur" target="_blank" rel="noopener">
+              Open in Maps →
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div><!-- /about-wrapper -->
+
+
+<!-- ══════════════════════════════════════════════════════
+     ③ VISION & MISSION
+═══════════════════════════════════════════════════════ -->
+<section class="vm-section" id="vision-mission" aria-label="Vision and Mission">
+  <div class="vm-section__grid-bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="inner-heading fade-up">
+      <p class="eyebrow">Our Purpose</p>
+      <h2 style="color:#fff">Vision &amp; Mission</h2>
+      <span class="gold-line"></span>
+    </div>
+
+    <div class="vm-grid">
+
+      <div class="vm-card fade-up fade-up--d1">
+        <p class="vm-card__type">Vision</p>
+        <h3 class="vm-card__title">To be Southeast Asia's most trusted curated marketplace.</h3>
+        <p class="vm-card__text">
+          We envision a world where every customer — regardless of budget or background —
+          can access premium, authenticated products with complete confidence. FOURTIFIED
+          aims to become the definitive destination for quality-first commerce across
+          the region by 2028.
+        </p>
+        <div class="vm-card__values">
+          <span class="vm-tag">Quality First</span>
+          <span class="vm-tag">Trusted</span>
+          <span class="vm-tag">Accessible</span>
+          <span class="vm-tag">Regional</span>
+        </div>
+      </div>
+
+      <div class="vm-card fade-up fade-up--d2">
+        <p class="vm-card__type">Mission</p>
+        <h3 class="vm-card__title">Curate, Authenticate, Deliver — without compromise.</h3>
+        <p class="vm-card__text">
+          Our mission is to hand-select only the finest products, verify every item
+          against our quality standards, and deliver an effortless shopping experience
+          from browse to doorstep. We invest in our community, our team and our supply
+          chain so that every purchase you make supports something worth believing in.
+        </p>
+        <div class="vm-card__values">
+          <span class="vm-tag">Curate</span>
+          <span class="vm-tag">Authenticate</span>
+          <span class="vm-tag">Deliver</span>
+          <span class="vm-tag">Community</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     ④ ACHIEVEMENTS
+═══════════════════════════════════════════════════════ -->
+<section class="achievements-section" id="achievements" aria-label="Achievements">
+  <div class="container">
+    <div class="inner-heading fade-up">
+      <p class="eyebrow">Milestones</p>
+      <h2>Our Achievements</h2>
+      <span class="gold-line"></span>
+    </div>
+
+    <div class="achievements-grid">
+
+      <div class="achievement-card fade-up fade-up--d1">
+        <span class="achievement-card__icon" aria-hidden="true">🏆</span>
+        <p class="achievement-card__year">2021</p>
+        <h3 class="achievement-card__title">Best New Retail Brand</h3>
+        <p class="achievement-card__desc">
+          Awarded by Malaysia Retail Excellence Awards for outstanding debut performance and customer satisfaction scores.
+        </p>
+      </div>
+
+      <div class="achievement-card fade-up fade-up--d2">
+        <span class="achievement-card__icon" aria-hidden="true">⭐</span>
+        <p class="achievement-card__year">2022</p>
+        <h3 class="achievement-card__title">20,000 Customers Milestone</h3>
+        <p class="achievement-card__desc">
+          Reached 20,000 verified customers within our first two years — maintaining a 4.8 / 5 average satisfaction rating.
+        </p>
+      </div>
+
+      <div class="achievement-card fade-up fade-up--d3">
+        <span class="achievement-card__icon" aria-hidden="true">🌏</span>
+        <p class="achievement-card__year">2023</p>
+        <h3 class="achievement-card__title">Regional Expansion</h3>
+        <p class="achievement-card__desc">
+          Launched shipping to Singapore, Thailand and Indonesia, expanding our reach to over 4 countries across Southeast Asia.
+        </p>
+      </div>
+
+      <div class="achievement-card fade-up fade-up--d4">
+        <span class="achievement-card__icon" aria-hidden="true">💎</span>
+        <p class="achievement-card__year">2024</p>
+        <h3 class="achievement-card__title">Top E-Commerce Platform</h3>
+        <p class="achievement-card__desc">
+          Recognised as a Top 10 Curated E-Commerce Platform in Malaysia by Digital Commerce Asia Magazine.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     CONTACT SEPARATOR
+═══════════════════════════════════════════════════════ -->
+<div class="contact-separator" id="contact" aria-hidden="true">
+  <div class="container">
+    <h2>Get In Touch</h2>
+    <p>We'd love to hear from you — reach us any way you prefer.</p>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     CONTACT US
+═══════════════════════════════════════════════════════ -->
+<div class="contact-wrapper">
+  <section class="contact-info-section" aria-label="Contact information">
+    <div class="container">
+
+      <div class="contact-main-grid">
+
+        <!-- ── Left: Contact Details ── -->
+        <div>
+          <div class="inner-heading fade-up" style="margin-bottom:32px">
+            <p class="eyebrow">Contact Details</p>
+            <h2>Reach Us Directly</h2>
+            <span class="gold-line"></span>
+          </div>
+
+          <div class="contact-cards fade-up fade-up--d1">
+
+            <div class="contact-card">
+              <div class="contact-card__icon-wrap" aria-hidden="true">✉️</div>
+              <div>
+                <p class="contact-card__label">Email</p>
+                <p class="contact-card__value">
+                  <a href="mailto:hello@fourtified.my">hello@fourtified.my</a>
+                </p>
+                <p class="contact-card__note">General enquiries &amp; orders</p>
+              </div>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-card__icon-wrap" aria-hidden="true">🛟</div>
+              <div>
+                <p class="contact-card__label">Support Email</p>
+                <p class="contact-card__value">
+                  <a href="mailto:support@fourtified.my">support@fourtified.my</a>
+                </p>
+                <p class="contact-card__note">Returns, refunds &amp; technical help</p>
+              </div>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-card__icon-wrap" aria-hidden="true">📞</div>
+              <div>
+                <p class="contact-card__label">Phone</p>
+                <p class="contact-card__value">
+                  <a href="tel:+60312345678">+603 1234 5678</a>
+                </p>
+                <p class="contact-card__note">Mon–Fri, 10am–6pm MYT</p>
+              </div>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-card__icon-wrap" aria-hidden="true">💬</div>
+              <div>
+                <p class="contact-card__label">WhatsApp</p>
+                <p class="contact-card__value">
+                  <a href="https://wa.me/60312345678" target="_blank" rel="noopener">+60 12-345 6789</a>
+                </p>
+                <p class="contact-card__note">Quick responses · Usually within 1 hour</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ── Right: Socials + Message Form ── -->
+        <div class="contact-right fade-up fade-up--d2">
+
+          <!-- Social Media -->
+          <div class="socials-block">
+            <div class="inner-heading" style="margin-bottom:20px">
+              <p class="eyebrow">Social Media</p>
+              <h3 style="font-family:var(--font-display);font-size:22px;font-weight:600">Follow Along</h3>
+              <span class="gold-line"></span>
+            </div>
+            <div class="socials-grid">
+
+              <a href="https://instagram.com/fourtified.my" target="_blank" rel="noopener" class="social-card social-card--ig" aria-label="Follow FOURTIFIED on Instagram">
+                <div class="social-card__icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="white" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="white" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="white"/></svg>
+                </div>
+                <div>
+                  <p class="social-card__name">Instagram</p>
+                  <p class="social-card__handle">@fourtified.my</p>
+                </div>
+              </a>
+
+              <a href="https://facebook.com/fourtified" target="_blank" rel="noopener" class="social-card social-card--fb" aria-label="Follow FOURTIFIED on Facebook">
+                <div class="social-card__icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                </div>
+                <div>
+                  <p class="social-card__name">Facebook</p>
+                  <p class="social-card__handle">FOURTIFIED</p>
+                </div>
+              </a>
+
+              <a href="https://tiktok.com/@fourtified.my" target="_blank" rel="noopener" class="social-card social-card--tt" aria-label="Follow FOURTIFIED on TikTok">
+                <div class="social-card__icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V9.01a8.16 8.16 0 0 0 4.77 1.52V7.08a4.85 4.85 0 0 1-1-.39z"/></svg>
+                </div>
+                <div>
+                  <p class="social-card__name">TikTok</p>
+                  <p class="social-card__handle">@fourtified.my</p>
+                </div>
+              </a>
+
+              <a href="https://twitter.com/fourtified_my" target="_blank" rel="noopener" class="social-card social-card--tw" aria-label="Follow FOURTIFIED on X / Twitter">
+                <div class="social-card__icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+                </div>
+                <div>
+                  <p class="social-card__name">X / Twitter</p>
+                  <p class="social-card__handle">@fourtified_my</p>
+                </div>
+              </a>
+
+            </div>
+          </div>
+
+          <!-- Quick Message Form -->
+          <div class="message-form-block">
+            <div class="inner-heading" style="margin-bottom:20px">
+              <p class="eyebrow">Drop a Message</p>
+              <h3 style="font-family:var(--font-display);font-size:22px;font-weight:600">Send Us a Note</h3>
+              <span class="gold-line"></span>
+            </div>
+            <div class="form-grid" id="contact-form">
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="cf-name">Full Name</label>
+                  <input type="text" id="cf-name" placeholder="Ahmad Rizal" autocomplete="name" />
+                </div>
+                <div class="form-field">
+                  <label for="cf-email">Email Address</label>
+                  <input type="email" id="cf-email" placeholder="you@email.com" autocomplete="email" />
+                </div>
+              </div>
+              <div class="form-field">
+                <label for="cf-subject">Subject</label>
+                <input type="text" id="cf-subject" placeholder="Order enquiry, product question…" />
+              </div>
+              <div class="form-field">
+                <label for="cf-message">Message</label>
+                <textarea id="cf-message" placeholder="Tell us how we can help…"></textarea>
+              </div>
+              <button class="btn btn--gold" onclick="handleContactSubmit()" style="align-self:flex-start;padding:14px 32px">
+                Send Message →
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+</div><!-- /contact-wrapper -->
+
+
+<!-- ═══════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════ -->
+<footer class="footer" aria-label="Site footer">
+  <div class="container">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <p class="footer__brand-name">FOUR<span>T</span>IFIED</p>
+        <p class="footer__tagline">Curated commerce for the discerning customer.</p>
+      </div>
+      <div>
+        <p class="footer__heading">Shop</p>
+        <ul class="footer__links">
+          <li><a href="clothing.html">Clothing</a></li>
+          <li><a href="electronics.html">Electronics</a></li>
+          <li><a href="jewellery.html">Jewellery</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer__heading">Company</p>
+        <ul class="footer__links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="about.html#contact">Contact</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer__heading">Support</p>
+        <ul class="footer__links">
+          <li><a href="#">Help Centre</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="mailto:support@fourtified.my">Email Support</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2024 FOURTIFIED. All rights reserved.</span>
+      <span class="footer__api-badge">Powered by FakeStore API</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+<script>
+  function handleContactSubmit() {
+    const name    = document.getElementById('cf-name').value.trim();
+    const email   = document.getElementById('cf-email').value.trim();
+    const subject = document.getElementById('cf-subject').value.trim();
+    const message = document.getElementById('cf-message').value.trim();
+
+    if (!name || !email || !message) {
+      showToast('Please fill in your name, email and message.');
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showToast('Please enter a valid email address.');
+      return;
+    }
+
+    // Clear form
+    ['cf-name','cf-email','cf-subject','cf-message'].forEach(id => {
+      document.getElementById(id).value = '';
+    });
+
+    showToast('Message sent! We\'ll reply within 24 hours. ✓');
+  }
+</script>
+</body>
+</html>

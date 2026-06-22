@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jewellery — FOURTIFIED</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="page-body">
+
+<!-- ═══════════════════════════════════════════════
+     NAV
+════════════════════════════════════════════════ -->
+<nav class="nav" aria-label="Main navigation">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">FOUR<span>T</span>IFIED</a>
+    <ul class="nav__links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="clothing.html">Clothing</a></li>
+      <li><a href="electronics.html">Electronics</a></li>
+      <li><a href="jewellery.html">Jewellery</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:8px">
+      <button class="nav__search-toggle" aria-label="Toggle search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </button>
+      <button class="nav__hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="nav__drawer">
+  <a href="index.html">Home</a>
+  <a href="clothing.html">Clothing</a>
+  <a href="electronics.html">Electronics</a>
+  <a href="jewellery.html">Jewellery</a>
+</div>
+
+<div class="search-bar" role="search">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="color:var(--ink-muted);flex-shrink:0"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+  <input type="search" placeholder="Search products…" aria-label="Search products" autocomplete="off" />
+  <button aria-label="Close search" onclick="document.querySelector('.search-bar').classList.remove('open');document.getElementById('search-results-dropdown').classList.remove('open')">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 6 6 18M6 6l12 12"/></svg>
+  </button>
+</div>
+<div id="search-results-dropdown" role="listbox" aria-label="Search results">
+  <div id="search-no-results" style="display:none">No products found for your search.</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     PAGE HERO
+════════════════════════════════════════════════ -->
+<section class="page-hero" aria-label="Jewellery department">
+  <div class="container">
+    <p class="page-hero__eyebrow">Fine Pieces</p>
+    <h1 class="page-hero__title">Jewellery</h1>
+    <p class="page-hero__desc">Timeless pieces crafted to last a lifetime. Rings, necklaces and more — discover fine jewellery for every moment.</p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     FILTER BAR
+════════════════════════════════════════════════ -->
+<div class="filter-bar" role="toolbar" aria-label="Filter and sort">
+  <div class="container filter-bar__inner">
+
+    <div class="filter-tabs" role="group" aria-label="Category filter">
+      <button class="filter-tab active" data-filter="all">All Jewellery</button>
+    </div>
+
+    <select class="filter-sort" aria-label="Sort products">
+      <option value="default">Sort: Featured</option>
+      <option value="price-asc">Price: Low to High</option>
+      <option value="price-desc">Price: High to Low</option>
+      <option value="rating">Top Rated</option>
+      <option value="popular">Most Popular</option>
+    </select>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     PRODUCTS
+════════════════════════════════════════════════ -->
+<section class="products-section" aria-label="Jewellery products">
+  <div class="container">
+    <p class="products-count" id="product-count">Loading products…</p>
+    <div class="products-grid" id="products-grid" aria-live="polite" aria-label="Product listing">
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════ -->
+<footer class="footer" aria-label="Site footer">
+  <div class="container">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <p class="footer__brand-name">FOUR<span>T</span>IFIED</p>
+        <p class="footer__tagline">Curated commerce for the discerning customer.</p>
+      </div>
+      <div>
+        <p class="footer__heading">Shop</p>
+        <ul class="footer__links">
+          <li><a href="clothing.html">Clothing</a></li>
+          <li><a href="electronics.html">Electronics</a></li>
+          <li><a href="jewellery.html">Jewellery</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer__heading">Company</p>
+        <ul class="footer__links">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer__heading">Support</p>
+        <ul class="footer__links">
+          <li><a href="#">Help Centre</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2024 FOURTIFIED. All rights reserved.</span>
+      <span class="footer__api-badge">Powered by FakeStore API</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
