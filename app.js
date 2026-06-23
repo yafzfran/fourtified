@@ -695,10 +695,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Pre-fetch exchange rates silently
   fetchExchangeRates();
 
-  const page = window.location.pathname.split('/').pop() || 'index.html';
+  const page = window.location.pathname.split('/').pop() || '';
 
   if (page === 'index.html' || page === '')   initHomepage();
-  if (page === 'clothing.html')               initListingPage('clothing');
-  if (page === 'electronics.html')            initListingPage('electronics');
-  if (page === 'jewellery.html')              initListingPage('jewellery');
+  if (page === 'clothing.html' || page === 'clothing')              initListingPage('clothing');
+  if (page === 'electronics.html' || page === 'electronics')           initListingPage('electronics');
+  if (page === 'jewellery.html' || page === 'jewellery')            initListingPage('jewellery');
 });
